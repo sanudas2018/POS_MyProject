@@ -14,7 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Step-1: user-registration 
+// Step-1: User Registration 
 Route::post('/user-registration',[UserController::class,'UserRegistration']);
+
+// Step-2: User login
+Route::post('/user-login',[UserController::class,'UserLogin']);
 
 
