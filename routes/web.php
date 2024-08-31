@@ -20,4 +20,6 @@ Route::post('/user-registration',[UserController::class,'UserRegistration']);
 // Step-2: User login
 Route::post('/user-login',[UserController::class,'UserLogin']);
 
+// Step-3: OTP Code Send
+Route::post('/send-otp',[UserController::class,'SendOTPCode']);
 
