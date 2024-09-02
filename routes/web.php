@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\TokenVerificationMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,5 +29,7 @@ Route::post('/send-otp',[UserController::class,'SendOTPCode']);
 // Step-4: Verify OTP
 Route::post('/verify-otp',[UserController::class,'VerifyOTP']);
 
+// Step-5: Reset Password & Token Verify
+Route::post('/reset-password',[UserController::class,'ResetPassword'])->middleware([TokenVerificationMiddleware::class]);
 
 
