@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+/*
+    Back End Route
+*/
 // Step-1: User Registration 
 Route::post('/user-registration',[UserController::class,'UserRegistration']);
 
@@ -22,4 +24,9 @@ Route::post('/user-login',[UserController::class,'UserLogin']);
 
 // Step-3: OTP Code Send
 Route::post('/send-otp',[UserController::class,'SendOTPCode']);
+
+// Step-4: Verify OTP
+Route::post('/verify-otp',[UserController::class,'VerifyOTP']);
+
+
 

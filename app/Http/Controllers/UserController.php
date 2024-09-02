@@ -42,11 +42,12 @@ class UserController extends Controller
 
     // JWT Token Control
     // User Login
-    function UserLogin(Request $request){
-        $count = User::where('email','=',$request->input('email'))
-        ->where('password','=',$request->input('password'))
-        ->count();
-        if($count == 1){
+    function UserLogin(Request $request)
+    {
+        $count = User::where('email', '=', $request->input('email'))
+            ->where('password', '=', $request->input('password'))
+            ->count();
+        if ($count == 1) {
             // User Login হবে JWT Token নিয়ে
             $token = JWTToken::CreateToken($request->input('email'));
             return response()->json([
@@ -54,7 +55,7 @@ class UserController extends Controller
                 'message' => 'User Login Successful',
                 'token' => $token
             ], 200);
-        }else{
+        } else {
             return response()->json([
                 'status' => 'failed',
                 'message' => 'Unauthorized'
@@ -64,7 +65,7 @@ class UserController extends Controller
 
 
     // OTP Code send Function
-        /*
+    /*
     Sending OTP code to email- password recovery stage 1 (end point)
     app -> Mail -> OTPMail তৈরি হবে ঃ
     php artisan make:mail OTPMail
@@ -76,51 +77,58 @@ class UserController extends Controller
     OTP mail blade page তৈরি করতে হবে।
     route setup
     */
-    function SendOTPCode(Request $request){
+    function SendOTPCode(Request $request)
+    {
         $email = $request->input('email');
         $otp = rand(1000, 9999);
-        $count = User::where('email','=',$email)->count();
-        if($count == 1){
+        $count = User::where('email', '=', $email)->count();
+        if ($count == 1) {
             // send OTP Code user email And Database table otp code update করতে হবে।
             // OTP Email Address send:
             Mail::to($email)->send(new OTPMail($otp));
 
             // OTP Code Table Update
-            User::where('email','=',$email)->update(['otp'=>$otp]);
+            User::where('email', '=', $email)->update(['otp' => $otp]);
 
             return response()->json([
                 'status' => 'success',
                 'message' => '4 Digit OTP Code has been send to your email'
             ], 200);
-
-        }else{
+        } else {
             return response()->json([
                 'status' => 'failed',
                 'message' => 'Unauthorized'
             ], 200);
         }
-
-
     }
 
+    // VerifyOTP এখানে আগের SendOTPCode টি verify করা হবে।
+    function VerifyOTP(Request $request)
+    {
+        $email = $request->input('email');
+        $otp = $request->input('otp');
+        $count = User::where('email', '=', $email)
+            ->where('otp', '=', $otp)->count();
 
+        if ($count == 1) {
+            // Database এ OTP টি কে Update করে দিতে হবে
+            User::where('email','=',$email)->update(['otp'=>'0']);
 
+            // Password reset Token Issue
+            // Validation Time add করতে হবে।
 
+            $token = JWTToken::CreateTokenForSetPassword($request->input('email'));
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            return response()->json([
+                'status' => 'success',
+                'message' => 'OTP Verification Success',
+                'token' => $token
+            ],200);
+        } else {
+            return response()->json([
+                'status' => 'failed',
+                'message' => 'Unauthorized'
+            ], 501);
+        }
+    }
 }
