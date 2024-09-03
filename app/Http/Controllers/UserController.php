@@ -149,4 +149,17 @@ class UserController extends Controller
             ],401);
         }
     }
+    /*
+        Password Reset option টি postman check করতে হলে যা করতে হবে ঃ 
+        প্রথমে postman এর যেখানে POS Project BackEnd আছে শাখানে Variables এর ভিতরে PasswordResetToken এর নাম এবং token টি দিতে হবে। 
+        এবার, user registration, user login, send otp, verify otp, করার পরে reset password করতে হবে এখানে Header এর ভিতরে key(token) এবং value( {{PasswordResetToken}} ) দিতে হবে। Token টি check করার জন্য।
+    */
+
+
+
+
+
+    
+
+
 }
