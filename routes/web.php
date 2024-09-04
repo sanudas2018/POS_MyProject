@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\TokenVerificationMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -31,5 +32,36 @@ Route::post('/verify-otp',[UserController::class,'VerifyOTP']);
 
 // Step-5: Reset Password & Token Verify
 Route::post('/reset-password',[UserController::class,'ResetPassword'])->middleware([TokenVerificationMiddleware::class]);
+
+
+
+/* Front End - Page Routes 
+   ------------------------------
+*/
+// Step-1: Login Page
+Route::get('/userLogin',[UserController::class,'LoginPage']);
+
+// Step-2: Registration Page
+Route::get('/userRegistration',[UserController::class,'RegistrationPage']);
+
+// Step-3: SendOTP Page
+Route::get('/sendOtp',[UserController::class,'SendOtpPage']);
+
+// Step-4: Verify OTP Page
+Route::get('/verifyOtp',[UserController::class,'VerifyOTPPage']);
+
+// Step-5: Reset Password Page
+Route::get('/resetPassword',[UserController::class,'ResetPasswordPage'])->middleware([TokenVerificationMiddleware::class]);
+
+// Step-6: Dashboard Page
+Route::get('/dashboard',[DashboardController::class,'DashboardPage'])->middleware([TokenVerificationMiddleware::class]);
+
+
+
+
+
+
+
+
 
 
