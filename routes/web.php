@@ -51,10 +51,11 @@ Route::get('/sendOtp',[UserController::class,'SendOtpPage']);
 Route::get('/verifyOtp',[UserController::class,'VerifyOTPPage']);
 
 // Step-5: Reset Password Page
-Route::get('/resetPassword',[UserController::class,'ResetPasswordPage'])->middleware([TokenVerificationMiddleware::class]);
+Route::get('/resetPassword',[UserController::class,'ResetPasswordPage']);
 
 // Step-6: Dashboard Page
-Route::get('/dashboard',[DashboardController::class,'DashboardPage'])->middleware([TokenVerificationMiddleware::class]);
+Route::get('/dashboard',[DashboardController::class,'DashboardPage']);
+// Route::get('/dashboard',[DashboardController::class,'DashboardPage'])->middleware([TokenVerificationMiddleware::class]);
 
 
 
