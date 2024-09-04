@@ -132,7 +132,7 @@ class UserController extends Controller
     }
 
     // VerifyOTP এখানে আগের SendOTPCode টি verify করা হবে।
-    function VerifyOTP(Request $request)
+    function VerifyOTP(Request $request) 
     {
         $email = $request->input('email');
         $otp = $request->input('otp');
@@ -151,14 +151,15 @@ class UserController extends Controller
             return response()->json([
                 'status' => 'success',
                 'message' => 'OTP Verification Success',
-                'token' => $token
-            ],200);
+                // 'token' => $token  
+            ],200)->cookie('token', $token,60*24*30);
         } else {
             return response()->json([
                 'status' => 'failed',
                 'message' => 'Unauthorized'
             ], 501);
         }
+
     }
 
     // Reset Password & Token Verify
