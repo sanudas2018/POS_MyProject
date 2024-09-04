@@ -39,7 +39,7 @@ Route::post('/reset-password',[UserController::class,'ResetPassword'])->middlewa
    ------------------------------
 */
 // Step-1: Login Page
-Route::get('/userLogin',[UserController::class,'LoginPage']);
+Route::get('/userLogin', [UserController::class,'LoginPage']);
 
 // Step-2: Registration Page
 Route::get('/userRegistration',[UserController::class,'RegistrationPage']);
