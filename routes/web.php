@@ -45,7 +45,7 @@ Route::get('/userLogin', [UserController::class,'LoginPage']);
 Route::get('/userRegistration', [UserController::class,'RegistrationPage']);
 
 // Step-3: SendOTP Page
-Route::get('/sendOtp',[UserController::class,'SendOtpPage']);
+Route::get('/sendOtp', [UserController::class,'SendOtpPage']);
 
 // Step-4: Verify OTP Page
 Route::get('/verifyOtp',[UserController::class,'VerifyOTPPage']);
