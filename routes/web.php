@@ -31,7 +31,7 @@ Route::post('/send-otp',[UserController::class,'SendOTPCode']);
 Route::post('/verify-otp', [UserController::class,'VerifyOTP']);
 
 // Step-5: Reset Password & Token Verify
-Route::post('/reset-password',[UserController::class,'ResetPassword'])->middleware([TokenVerificationMiddleware::class]);
+Route::post('/reset-password',[UserController::class,'ResetPassword'])->middleware([TokenVerificationMiddleware::class]); 
 
 
 
@@ -51,7 +51,7 @@ Route::get('/sendOtp', [UserController::class,'SendOtpPage']);
 Route::get('/verifyOtp', [UserController::class,'VerifyOTPPage']);
 
 // Step-5: Reset Password Page
-Route::get('/resetPassword',[UserController::class,'ResetPasswordPage']);
+Route::get('/resetPassword',[UserController::class,'ResetPasswordPage']); 
 
 // Step-6: Dashboard Page
 Route::get('/dashboard',[DashboardController::class,'DashboardPage']);

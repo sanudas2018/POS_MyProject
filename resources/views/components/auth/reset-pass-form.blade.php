@@ -6,10 +6,10 @@
                     <h4>SET NEW PASSWORD</h4>
                     <br/>
                     <label>New Password</label>
-                    <input id="password" placeholder="New Password" class="form-control" type="password"/>
+                    <input id="password"  placeholder="New Password" class="form-control" type="password"/>
                     <br/>
                     <label>Confirm Password</label>
-                    <input id="cpassword" placeholder="Confirm Password" class="form-control" type="password"/>
+                    <input id="cpassword"  placeholder="Confirm Password" class="form-control" type="password"/>
                     <br/>
                     <button onclick="ResetPass()" class="btn w-100 bg-gradient-primary">Next</button>
                 </div>
@@ -19,10 +19,12 @@
 </div>
 
 <script>
-  async function ResetPass() {
+
+  async function ResetPass() { 
+    // value received
         let password = document.getElementById('password').value;
         let cpassword = document.getElementById('cpassword').value;
-
+ 
         if(password.length===0){
             errorToast('Password is required')
         }
@@ -31,19 +33,20 @@
         }
         else if(password!==cpassword){
             errorToast('Password and Confirm Password must be same')
-        }
-        else{
+        } 
+        else{ 
           showLoader()
-          let res=await axios.post("/reset-password",{password:password});
+          let res=await axios.post("/reset-password",{password:password}); 
           hideLoader();
-          if(res.status===200 && res.data['status']==='success'){
+          if(res.status===200 && res.data['status']==='success'){ 
               successToast(res.data['message']);
+            //   debugger;
               setTimeout(function () {
                   window.location.href="/userLogin";
-              },1000);
+              },1000); 
           }
           else{
-            errorToast(res.data['message'])
+            errorToast(res.data['message']) 
           }
         }
 

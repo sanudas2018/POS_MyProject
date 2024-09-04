@@ -162,10 +162,10 @@ class UserController extends Controller
 
     }
 
-    // Reset Password & Token Verify
-    function ResetPassword(Request $request){
+    // Reset Password & Token Verify 
+    function ResetPassword(Request $request){ 
         try{
-            $email = $request->header('email');
+        $email = $request->header('email');
         $password = $request->input('password');
         User::where('email','=',$email)->update(['password'=>$password]);
         return response()->json([
@@ -175,16 +175,16 @@ class UserController extends Controller
         }catch(Exception $exception){
             return response()->json([
                 'status' => 'fail',
-                'message' => 'ResetPassword Worng'
+                'message' => 'ResetPassword Wrong'
             ],401);
         }
-    }
+    } 
     /*
         Password Reset option টি postman check করতে হলে যা করতে হবে ঃ 
         প্রথমে postman এর যেখানে POS Project BackEnd আছে শাখানে Variables এর ভিতরে PasswordResetToken এর নাম এবং token টি দিতে হবে। 
         এবার, user registration, user login, send otp, verify otp, করার পরে reset password করতে হবে এখানে Header এর ভিতরে key(token) এবং value( {{PasswordResetToken}} ) দিতে হবে। Token টি check করার জন্য।
     */
-
+ 
 
 
 
