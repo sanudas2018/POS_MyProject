@@ -44,13 +44,14 @@
 
 
   async function onRegistration() {
-
+        // input থেকে value গুলি নিতে হবে।
         let email = document.getElementById('email').value;
         let firstName = document.getElementById('firstName').value;
         let lastName = document.getElementById('lastName').value;
         let mobile = document.getElementById('mobile').value;
         let password = document.getElementById('password').value;
 
+        // condition apply
         if(email.length===0){
             errorToast('Email is required')
         }

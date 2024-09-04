@@ -54,7 +54,7 @@ class UserController extends Controller
             ]);
 
             // User Registration হবে, পরে message show করার জন্য। এটি Front End থেকে ব্যাবহার করা যেতে পারে।
-            return response()->json([
+            return response()->json([ 
                 'status' => 'success',
                 'message' => 'User Registration Successfully'
             ], 200);
