@@ -8,7 +8,7 @@ use Firebase\JWT\Key;
 
 class JWTToken
 {
-    public static function CreateToken($userEmail): string
+    public static function CreateToken($userEmail, $userID): string 
     {
         // evn file থেকে read করা নিলাম
         $key = env('JWT_KEY');
@@ -21,7 +21,8 @@ class JWTToken
             'exp' => time()+60*60,
 
             // User Email set করা. নিদিষ্ট ইউজার কে পাবার জন্য।
-            'userEmail' => $userEmail
+            'userEmail' => $userEmail,
+            'userID' => $userID
         ];
         return JWT::encode($payload, $key, 'HS256');
     }
@@ -40,19 +41,30 @@ class JWTToken
             'exp' => time()+60*5,
 
             // User Email set করা. নিদিষ্ট ইউজার কে পাবার জন্য।
-            'userEmail' => $userEmail
+            'userEmail' => $userEmail,
+            'userID' => '0'
         ];
         return JWT::encode($payload, $key, 'HS256');
     }
 
 
 
-    public static function verifyToken($token): string
+    public static function verifyToken($token): string | object
     {
         try {
-            $key = env('JWT_KEY');
-            $decode = JWT::decode($token,new Key($key, 'HS256'));
-            return $decode->userEmail;
+            /*
+            page এর null error ঠেকানর জন্য if else condition use করতে হবে।
+            */ 
+            if($token == null){
+                return 'unauthorized';
+            }else{
+                $key = env('JWT_KEY');
+                $decode = JWT::decode($token,new Key($key, 'HS256'));
+                // return $decode->userEmail;
+                // object return হবে (email, id)
+                return $decode; 
+            }
+            
         } catch (Exception $e) {
             return 'unauthorized';
         }

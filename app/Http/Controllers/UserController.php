@@ -72,12 +72,22 @@ class UserController extends Controller
     // User Login
     function UserLogin(Request $request)
     {
-        $count = User::where('email', '=', $request->input('email'))
+       /* 
+       প্রথম এভাবে করা হয়েছেঃ
+       ----------------------
+       $count = User::where('email', '=', $request->input('email'))
             ->where('password', '=', $request->input('password'))
             ->count();
-        if ($count == 1) {
-            // User Login হবে JWT Token নিয়ে
-            $token = JWTToken::CreateToken($request->input('email'));
+        */
+        /* Final এভাবে করতে হবে */ 
+        $count = User::where('email', '=', $request->input('email'))
+            ->where('password', '=', $request->input('password'))
+            ->select('id')->first();
+        if ($count !== null) {
+            /*
+            CreateToken এর ভিতরে দুটি parameter pass করতে হবে email, id
+            */
+            $token = JWTToken::CreateToken($request->input('email'), $count->id);
             return response()->json([
                 'status' => 'success',
                 'message' => 'User Login Successful',
@@ -185,7 +195,11 @@ class UserController extends Controller
         এবার, user registration, user login, send otp, verify otp, করার পরে reset password করতে হবে এখানে Header এর ভিতরে key(token) এবং value( {{PasswordResetToken}} ) দিতে হবে। Token টি check করার জন্য।
     */
  
-
+    // LogOut Process
+    function UserLogout(){
+        return redirect('/userLogin')->cookie('token', '', -1);
+    }
+    // Middleware এর মাধ্যমে - user যদি login না করে তা হলে তাকে Dashboard এ যেতে বাধা দিবে। এখানে email এর সাথে সাথে user id টি ও নিতে হবে। UserLogin function এর ভিতরে।
 
 
 
