@@ -56,9 +56,11 @@ Route::get('/resetPassword',[UserController::class,'ResetPasswordPage'])->middle
 // Step-6: Dashboard Page
 Route::get('/dashboard',[DashboardController::class,'DashboardPage'])->middleware([TokenVerificationMiddleware::class]);
 
-
 // Step-7: Logout
 Route::get('/logout', [UserController::class,'UserLogout'])->middleware([TokenVerificationMiddleware::class]);
+
+// Step-8: Profile Page
+Route::get('/userProfile', [UserController::class,'ProfilePage'])->middleware([TokenVerificationMiddleware::class]);
 
 
 

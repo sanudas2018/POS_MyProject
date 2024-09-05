@@ -29,9 +29,9 @@ class UserController extends Controller
     function ResetPasswordPage():View{
         return view('pages.auth.reset-pass-page');
     }
-    // function ProfilePage():View{
-    //     return view('pages.dashboard.profile-page');
-    // }
+    function ProfilePage():View{
+        return view('pages.dashboard.profile-page');
+    }
 
 
     // --------------END PAGE VIEW---------------

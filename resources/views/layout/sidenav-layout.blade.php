@@ -58,7 +58,7 @@
                         <hr class="user-dropdown-divider  p-0"/>
                     </div>
                     <a href="{{url('/userProfile')}}" class="side-bar-item">
-                        <span class="side-bar-item-caption">Profile</span>
+                        <span class="side-bar-item-caption"> Profile </span>
                     </a>
                     <!-- LogOut Button -->
                     <a href=" {{url("/logout")}} " class="side-bar-item">
