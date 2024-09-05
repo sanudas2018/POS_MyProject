@@ -201,6 +201,44 @@ class UserController extends Controller
     }
     // Middleware এর মাধ্যমে - user যদি login না করে তা হলে তাকে Dashboard এ যেতে বাধা দিবে। এখানে email এর সাথে সাথে user id টি ও নিতে হবে। UserLogin function এর ভিতরে।
 
+    // User Profile Data received and update
+    function UserProfile(Request $request){
+        // Security manage with Token verified
+        $email = $request->header('email');
+        $user = User::where('email','=', $email)->first();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Request Successful User Profile',
+            'data' => $user
+        ],200);
+    }
+
+    // User Profile Update
+    function UpdateProfile(Request $request){
+        try{
+            $email=$request->header('email');
+            $firstName=$request->input('firstName');
+            $lastName=$request->input('lastName');
+            $mobile=$request->input('mobile');
+            $password=$request->input('password');
+            User::where('email','=',$email)->update([
+                'firstName'=>$firstName,
+                'lastName'=>$lastName,
+                'mobile'=>$mobile,
+                'password'=>$password
+            ]);
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Request Successful',
+            ],200);
+
+        }catch (Exception $exception){
+            return response()->json([
+                'status' => 'fail',
+                'message' => 'Something Went Wrong',
+            ],200);
+        }
+    }
 
 
     

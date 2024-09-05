@@ -33,6 +33,19 @@ Route::post('/verify-otp', [UserController::class,'VerifyOTP']);
 // Step-5: Reset Password & Token Verify
 Route::post('/reset-password',[UserController::class,'ResetPassword'])->middleware([TokenVerificationMiddleware::class]); 
 
+// Step-6: User Profile All Data
+Route::get('/user-profile',[UserController::class,'UserProfile'])->middleware([TokenVerificationMiddleware::class]); 
+
+// Step-6: User Profile Update
+Route::post('/user-update',[UserController::class,'UpdateProfile'])->middleware([TokenVerificationMiddleware::class]); 
+
+
+
+
+
+
+
+
 
 
 /* Front End - Page Routes 
