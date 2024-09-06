@@ -14,10 +14,14 @@
 
 
     <link href="{{asset('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css')}}" rel="stylesheet" />
-
-    <link href="{{asset('css/jquery.dataTables.min.css')}}" rel="stylesheet" />
+    
+    <!-- All Data Table এ show করানর জন্য এটি use করা হয়েছে -->
+    <link href="{{asset('css/jquery.dataTables.min.css')}}" rel="stylesheet"/>
+    <!-- jQuery Link -->
     <script src="{{asset('js/jquery-3.7.0.min.js')}}"></script>
+    <!-- All Data Table এ show করানর জন্য এটি use করা হয়েছে -->
     <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
+
 
 
     <script src="{{asset('js/toastify-js.js')}}"></script>

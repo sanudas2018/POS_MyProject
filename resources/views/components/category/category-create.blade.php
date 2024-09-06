@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-dialog-centered modal-md">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h6 class="modal-title" id="exampleModalLabel">Create Category</h6>
+                    <h6 class="modal-title" id="exampleModalLabel">Create Category </h6>
                 </div>
                 <div class="modal-body">
                     <form id="save-form">
@@ -26,11 +26,12 @@
 
 
 <script>
+
     async function Save() {
         let categoryName = document.getElementById('categoryName').value;
         if (categoryName.length === 0) {
             errorToast("Category Required !")
-        }
+        } 
         else {
             document.getElementById('modal-close').click();
             showLoader();
@@ -46,4 +47,5 @@
             }
         }
     }
+
 </script>

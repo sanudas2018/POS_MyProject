@@ -21,7 +21,7 @@
                 </tr>
                 </thead>
                 <tbody id="tableList">
-
+                    <!-- এখানে All Data Show করান হবে -->
                 </tbody>
             </table>
             </div>
@@ -75,8 +75,8 @@ async function getList() {
     })
 
     new DataTable('#tableData',{
-       order:[[0,'desc']],
-       lengthMenu:[5,10,15,20,30]
+       order:[[0,'desc']], //asc
+       lengthMenu:[5,10,15,20,30,40]
    });
 
 }

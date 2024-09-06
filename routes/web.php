@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\TokenVerificationMiddleware;
@@ -47,7 +48,6 @@ Route::post('/user-update',[UserController::class,'UpdateProfile'])->middleware(
 
 
 
-
 /* Front End - Page Routes 
    ------------------------------
 */
@@ -76,7 +76,15 @@ Route::get('/logout', [UserController::class,'UserLogout'])->middleware([TokenVe
 Route::get('/userProfile', [UserController::class,'ProfilePage'])->middleware([TokenVerificationMiddleware::class]);
 
 
+// Category Page Route:
+Route::get('/categoryPage',[CategoryController::class,'CategoryPage'])->middleware([TokenVerificationMiddleware::class]);
 
+// Category API
+Route::post("/create-category",[CategoryController::class,'CategoryCreate'])->middleware([TokenVerificationMiddleware::class]);
+Route::get("/list-category",[CategoryController::class,'CategoryList'])->middleware([TokenVerificationMiddleware::class]);
+Route::post("/delete-category",[CategoryController::class,'CategoryDelete'])->middleware([TokenVerificationMiddleware::class]);
+Route::post("/update-category",[CategoryController::class,'CategoryUpdate'])->middleware([TokenVerificationMiddleware::class]);
+Route::post("/category-by-id",[CategoryController::class,'CategoryByID'])->middleware([TokenVerificationMiddleware::class]);
 
 
 

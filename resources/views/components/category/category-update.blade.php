@@ -5,6 +5,7 @@
                 <h5 class="modal-title" id="exampleModalLabel">Update Category</h5>
             </div>
             <div class="modal-body">
+
                 <form id="update-form">
                     <div class="container">
                         <div class="row">
@@ -16,6 +17,7 @@
                         </div>
                     </div>
                 </form>
+
             </div>
             <div class="modal-footer">
                 <button id="update-modal-close" class="btn bg-gradient-primary" data-bs-dismiss="modal" aria-label="Close">Close</button>
@@ -37,7 +39,7 @@
         document.getElementById('categoryNameUpdate').value=res.data['name'];
     }
 
-    async function Update() {
+    async function Update() { 
 
         let categoryName = document.getElementById('categoryNameUpdate').value;
         let updateID = document.getElementById('updateID').value;
@@ -60,10 +62,7 @@
                 errorToast("Request fail !")
             }
 
-
         }
-
-
 
     }
 
