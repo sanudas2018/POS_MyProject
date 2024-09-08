@@ -32,6 +32,7 @@ class CategoryController extends Controller
 
 
     function CategoryByID(Request $request){
+        // sleep(5); 5s পরে model টি Open হবে।
         $category_id=$request->input('id');
         $user_id=$request->header('id');
         return Category::where('id',$category_id)->where('user_id',$user_id)->first();

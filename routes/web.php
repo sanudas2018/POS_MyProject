@@ -88,7 +88,7 @@ Route::post("/update-category",[CategoryController::class,'CategoryUpdate'])->mi
 Route::post("/category-by-id",[CategoryController::class,'CategoryByID'])->middleware([TokenVerificationMiddleware::class]);
 
 
-// Category Page Route:
+// Customer Page Route:
 Route::get('/customerPage',[CustomerController::class,'CustomerPage'])->middleware([TokenVerificationMiddleware::class]);
 // Customer API
 Route::post("/create-customer",[CustomerController::class,'CustomerCreate'])->middleware([TokenVerificationMiddleware::class]);

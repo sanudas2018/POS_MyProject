@@ -62,9 +62,11 @@ async function getList() {
 
     $('.editBtn').on('click', async function () {
            let id= $(this).data('id');
+           // $("updateID").val(id);
            await FillUpUpdateForm(id)
            $("#update-modal").modal('show');
-
+        
+           
 
     })
 
