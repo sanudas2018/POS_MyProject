@@ -24,12 +24,67 @@
  1. OWASP Laravel Security-
  https://cheatsheetseries.owasp.org/cheatsheets/Laravel_Cheat_Sheet.html
 
+*********************
+ Project Making Process:
+*********************
+
+------- Back End Developer -------
+1.  Migration File
+2.  Demo data install
+3.  Model and Migration Create
+4.  CategoryController Crate:
+        -- CategoryPage
+        -- CategoryList
+        -- CategoryCreate
+        -- CategoryDelete
+        -- CategoryById
+        -- CategoryUpdate
+
+------- Front End Developer -------
+5. Web Route Make:
+        -- Main Central Category Page Create
+            -- Category Create Page
+            -- Category List Page
+            -- Category View Page
+            -- Category Update Page
+            -- Category Delete Page
 
 
+-------------
+JWT:
+--------------
+1. JWT php Package install
+2. JWT Key add .env file
+3. JWT encode
+4. JWT decode
+5. JWTToken class make
+
+-----------
+PDF
+-----------
+1. laravel dompdf install
 
 
+*******************
+Rabbil vi Bank Project:
+-----------------------
+Requirement
+Data
+Data correction
+Data migration
 
+Extranet > Internet >Front
+Internet BackEnd = Data Exchange Security
+Extranet BackEnd = Data Exchange Security
 
+Business Logic = SQL SMTP
+
+Security Test
+UAT (Calculation Test)
+Pilot Program - Done
+Public
+
+*******************
 
 
 
