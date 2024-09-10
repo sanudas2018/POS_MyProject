@@ -123,4 +123,8 @@ Route::post("/invoice-details",[InvoiceController::class,'InvoiceDetails'])->mid
 Route::post("/invoice-delete",[InvoiceController::class,'invoiceDelete'])->middleware([TokenVerificationMiddleware::class]);
 
 
+// SUMMARY & Report
+Route::get("/summary",[DashboardController::class,'Summary'])->middleware([TokenVerificationMiddleware::class]);
 
+
+//
