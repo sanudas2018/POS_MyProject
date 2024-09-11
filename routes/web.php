@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReportController;
@@ -55,6 +56,8 @@ Route::post('/user-update',[UserController::class,'UpdateProfile'])->middleware(
 /* Front End - Page Routes 
    ------------------------------
 */
+// HOME Page
+Route::get('/',[HomeController::class,'HomePage']);
 // Step-1: Login Page
 Route::get('/userLogin', [UserController::class,'LoginPage']);
 
